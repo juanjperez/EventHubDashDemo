@@ -29,7 +29,7 @@ the two consuming worker roles.  You can create up to 20 consuming worker roles 
 Note: You'll need to increase the number of Throughput Units in your Azure Event Hub to realize the highest 
 throughput available from 20 partitions.
 
-![](EHDash/img/screenshot.png)
+![](EHDash/img/Screenshot.png)
 
 Steps to configure the application in both Azure and the Visual Studio solution.
 
@@ -45,7 +45,7 @@ Steps to configure the application in both Azure and the Visual Studio solution.
 		'Manage Access Keys' dialog.  Save the 'Storage Account Name' and 'Primary Access Key'.  
 		You'll use it to create a storage connection string in a later step.
 
-![](EHDash/img/Storagekeys.png)
+![](EHDash/img/storagekeys.png)
 		
 	4. Create Event Hub in the Service Bus namespace.
 		a. Since the code uses the "ioteventhub" Event Hub create this event hub in your namespace.  
