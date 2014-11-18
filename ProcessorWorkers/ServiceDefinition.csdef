@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="ProcessorWorkers" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WorkerRole name="DashboardProcessor" vmsize="Medium">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="ServiceBusConnectionString" />
+      <Setting name="EventHubName" />
+      <Setting name="AzureStorageConnectionString" />
+      <Setting name="WorkerName" />
+    </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>

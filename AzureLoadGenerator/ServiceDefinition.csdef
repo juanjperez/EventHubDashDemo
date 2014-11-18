@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="AzureLoadGenerator" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WorkerRole name="AzureLoadGenWorker" vmsize="Medium">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="ServiceBusConnectionString" />
+      <Setting name="EventHubName" />
+      <Setting name="PartitionCount" />
+      <Setting name="FieldCount" />
+      <Setting name="NumberOfCells" />
+      <Setting name="Frequency" />
+    </ConfigurationSettings>
+    <Certificates>
+    </Certificates>
+  </WorkerRole>
+</ServiceDefinition>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="sbApp">
+<head>
+
+    <!--minifyier: http://refresh-sf.com/yui/#output-->
+    <title>Service Bus JavaScrcipt SDK QueueClient Test Page</title>
+    <link rel="stylesheet" href="css/qunit-git.css" type="text/css" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
+
+    <script src="Scripts/servicebussdk-1.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--<script src="Scripts/servicebusjssdk-1.0.min.js"></script>-->
+  
+    <!-- Syntax Highlighter -->
+    <link rel="stylesheet" href="css/shCore.css" type="text/css" /> <!-- SyntaxHighlighter CSS style -->
+    <link rel="stylesheet" href="css/shThemeEclipse.css" type="text/css" /> <!-- SyntaxHighlighter ThemeStyle -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+
+    <script type="text/javascript" src="Scripts/Keys.js"></script>
+    <script type="text/javascript" src="Scripts/code.js"></script>
+
+    <!-- Syntax Highlighter -->
+
+</head>
+<body style="background-color:#2086bf;color:white; width:1000px;margin:auto;">
+    
+    <h1><img src="img/layout-brand-sm.png" style="margin-left:4px;"/><br/>Event Hubs Demo</h1>
+    <div ng-controller="sbAppController">
+        
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="instancehead">
+                    Overall Event Producer Throughput <br />
+                    <span style="font-size:3.5em;">{{sendthroughput}}</span> <br />
+                    <span style="font-size:1em;">msgs/sec</span><br />
+                </div>
+                
+                <div ng-repeat="sender in senders" class="instance clear">
+                    Azure Worker Role Machine Name: {{sender.senderId}} <br/>
+                    <span style="font-size:3.5em;">{{sender.rate}}</span> <br />
+                    <span style="font-size:1em;">msgs/sec</span>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="instancehead">
+                    Overall Event Consumer Throughput <br />
+                    <span style="font-size:3.5em;">{{throughput}}</span> <br />
+                    <span style="font-size:1em;">msgs/sec</span><br />
+                </div>
+                <div ng-repeat="consumer in consumers" class="instance clear">
+                    Azure Worker Role Machine Name: <span style="font-weight:bold;">{{consumer.consumerId}}</span>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span style="font-size:.5em;">Throughput</span> <br />
+                            <span style="font-size:3.5em;">{{consumer.rate}}</span> <br/>
+                            <span style="font-size:1em;">msgs/sec</span><br />
+                            <button class="btn btn-success" id="{{consumer.consumerId}}" 
+                                    ng-click="ToggleStateOfWorker(consumer.consumerId)" 
+                                    style="background-image:none;width:90px;margin-top: 27px;" ng-disabled="consumer.disabled">{{consumer.state}}</button>
+                        </div>
+                        <div class="col-md-10">
+                            <div style="float: none;">
+                                <div ng-repeat="recpartition in consumer.recpartitions"
+                                     style="float: left; margin: 3px; padding: 4px; color: white;
+                            background-color: {{recpartition.rate == 0 ? 'black':'#C76C00'}};
+                            width: 40px;">
+                                    <span style="font-size:.5em;">{{recpartition.id}} </span><br />
+                                    <span style="font-size:1.2em;">{{recpartition.rate}} </span><br />
+                                    <span style="font-size:.5em;">msgs/sec</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- here -->
+
+
+                    
+                </div>
+
+
+        </div>
+
+
+ 
+    </div>
+
+
+
+</body>
+</html>
